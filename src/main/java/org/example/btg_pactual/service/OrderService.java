@@ -29,42 +29,6 @@ public class OrderService {
         this.mongoTemplate = mongoTemplate;
     }
 
-//    public void saveOrder(_Order order){
-//        orderRepository.save(order);
-//    }
-
-//    public List<_Order> listAllOrders(){
-//        return orderRepository.findAll();
-//    }
-
-//    public BigDecimal totalValue(Long codigoPedido){
-//        Optional<_Order> orderOptional = orderRepository.findByCodigoPedido(codigoPedido);
-//        if(orderOptional.isPresent()){
-//            _Order order = orderOptional.get();
-//
-//            BigDecimal totalValue = order.getItens()
-//                    .stream()
-//                    .map(item -> item.getPreco().multiply(BigDecimal.valueOf(item.getQuantidade())))
-//                    .reduce(BigDecimal.ZERO, BigDecimal::add);
-//
-//            return totalValue;
-//        }
-//        return BigDecimal.ZERO;
-//    }
-
-//    public Integer amountOrder(Long codigoCliente){
-//        List<_Order> orders = orderRepository.findAllByCodigoCliente(codigoCliente);
-//        return orders.size();
-//    }
-
-//    public List<_OrderItem> listOrderCustomer(Long codigoCliente){
-//        var orders = orderRepository.findAllByCodigoCliente(codigoCliente);
-//
-//        return orders.stream()
-//                .flatMap(order -> order.getItens().stream())
-//                .toList();
-//    }
-
     public void save(OrderCreatedEvent event){
         Order newOrder = new Order();
         newOrder.setCodigoCliente(event.codigoCliente());
